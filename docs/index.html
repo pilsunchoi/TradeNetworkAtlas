@@ -107,7 +107,7 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
 .doc .hs6{font-family:var(--mono);font-size:var(--fs-1);color:var(--ink2)}
 .doc .placeholder{border:1px dashed var(--line2);border-radius:6px;padding:12px 14px;color:var(--muted);font-size:var(--fs-1)}
 /* 연구 탭 — 챕터 카드 */
-.research{display:flex;flex-direction:column;gap:14px;max-width:1080px}
+.research{display:flex;flex-direction:column;gap:14px;width:100%;max-width:1080px;margin-inline:auto}
 .research-head .h2{font-family:var(--serif);font-weight:400;font-size:30px;margin:0 0 6px}
 .research-head .lead{color:var(--ink2);font-size:var(--fs-2);margin:0 0 8px;max-width:78ch}
 .research-head .note{color:var(--muted);font-size:var(--fs-1);margin:0;max-width:78ch;border-left:2px solid var(--line2);padding-left:12px}
@@ -127,7 +127,7 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
 .mono-figs img{display:block;width:100%;height:auto;border:1px solid var(--line2);border-radius:6px;background:#fff}
 .mono-links{display:flex;flex-wrap:wrap;gap:10px 22px;border-top:1px solid var(--line);padding-top:14px}
 .mono-links a{color:var(--accent);font-weight:600;font-size:var(--fs-1);text-decoration:none}
-.mono-links a::after{content:" 97"}
+.mono-links a::after{content:" ↗"}
 .mono-links a:hover{text-decoration:underline}
 @media (max-width:640px){ .mono-card{grid-template-columns:1fr;padding:16px;gap:4px} .mono-num{font-size:34px} .mono-chtitle{font-size:22px} }
 @media (max-width:1100px){ .app{grid-template-columns:260px minmax(0,1fr)} .detail{grid-column:1/-1;max-height:50vh} }
