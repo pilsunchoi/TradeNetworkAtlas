@@ -29,10 +29,26 @@ import igraph as ig
 import leidenalg as la
 
 KOR = 410
-# 변형: (가중치 하한 v, 고정 국가군 제한 여부, 제외 국가 코드). 정의는 연구계획 §3.
+# 변형: (가중치 하한 v, 고정 국가군 제한 여부, 제외 국가 코드).
+# 가중치 하한이 "cpi"이면 1995년 불변가격 100만 달러를 해마다 미국 CPI-U로 올린 실질 임곗값을 쓴다
+# (1995년 1,000천 달러, 2024년 약 2,059천 달러). CPI는 config/us_cpi_u_annual.csv(FRED CPIAUCNS 연평균).
 CHN = 156
+REAL = "cpi"
 VARIANTS = {"raw": (0.0, False, frozenset()), "w1m": (1000.0, False, frozenset()),
-            "w1m_bal": (1000.0, True, frozenset()), "w1m_bal_xchn": (1000.0, True, frozenset({CHN}))}
+            "w1m_bal": (1000.0, True, frozenset()), "w1m_bal_xchn": (1000.0, True, frozenset({CHN})),
+            "w1m_bal_real": (REAL, True, frozenset()), "w1m_bal_xchn_real": (REAL, True, frozenset({CHN}))}
+_CPI = None
+
+
+def threshold(wmin, t):
+    """연도 t의 가중치 하한(천 달러). 실질 변형이면 1995년 불변 100만 달러를 CPI로 환산한다."""
+    global _CPI
+    if wmin != REAL:
+        return wmin
+    if _CPI is None:
+        df = pd.read_csv(ROOT / "config" / "us_cpi_u_annual.csv")
+        _CPI = dict(zip(df.year.astype(int), df.cpi_u.astype(float)))
+    return 1000.0 * _CPI[int(t)] / _CPI[1995]
 NODE_KEEP_HS4 = 30  # hs4 수준에서 노드 표에 남길 상위 국가 수(+한국)
 
 METRIC_COLS = ["level", "code", "t", "variant", "n_nodes", "n_edges", "total_value", "density", "reciprocity",
@@ -90,7 +106,8 @@ def metrics_for(level, code, t, edges, region_of, fixed=None, variants=None):
             continue
         if bal and not fixed:
             continue
-        e = edges[edges.v >= wmin] if wmin > 0 else edges
+        w_t = threshold(wmin, t)
+        e = edges[edges.v >= w_t] if w_t > 0 else edges
         if bal:
             e = e[e.i.isin(fixed) & e.j.isin(fixed)]
         if excl:
