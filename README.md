@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/code-MIT-green.svg)](LICENSE)
 [![Dashboard](https://img.shields.io/badge/%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C-pilsunchoi.github.io%2FTradeNetworkAtlas-1f6feb)](https://pilsunchoi.github.io/TradeNetworkAtlas/)
 
-CEPII의 BACI(HS92) 양자 무역 자료로 품목마다 나라를 노드, 수출입 흐름을 엣지로 하는 네트워크를 해마다 만들고, 그 구조가 30년 동안 어떻게 바뀌었는지를 본다. 대시보드에서 12개 주요 품목의 네트워크를 연도별로 넘겨 볼 수 있고, 연구 탭에 네트워크 지표 해설과 분석 보고서가 있다.
+CEPII의 BACI (HS92) 양자 무역 자료로 품목마다 나라를 노드, 수출입 흐름을 엣지로 하는 네트워크를 해마다 만들고, 그 구조가 30년 동안 어떻게 바뀌었는지를 본다. 대시보드에서 12개 주요 품목의 네트워크를 연도별로 넘겨 볼 수 있고, 연구 탭에 네트워크 지표 해설과 분석 보고서가 있다.
 
 ## 무엇이 들어 있나
 
@@ -54,6 +54,6 @@ python -m http.server 8765 --directory docs
 
 ## 출처와 이용 조건
 
-- **자료**: BACI — Gaulier, G. and Zignago, S. (2010) "BACI: International Trade Database at the Product-Level. The 1994-2007 Version", CEPII Working Paper 2010-23. 판본 V202601(2026-01-30 공개). 라이선스 Etalab Open Licence 2.0, 출처표시 의무.
+- **자료**: BACI — Gaulier, G. and Zignago, S. (2010) "BACI: International Trade Database at the Product-Level. The 1994-2007 Version", CEPII Working Paper 2010-23. 판본 V202601 (2026-01-30 공개). 라이선스 Etalab Open Licence 2.0, 출처표시 의무.
 - BACI는 UN Comtrade의 보고를 조정해 만든 자료다. 이 저장소는 UN Comtrade 원자료를 담거나 재배포하지 않는다.
 - 코드와 문서는 [MIT 라이선스](LICENSE)를 따른다. `docs/data/`의 자료는 BACI의 파생물이므로 BACI의 조건을 따른다. 상세는 [NOTICE](NOTICE.md).
