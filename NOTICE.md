@@ -8,7 +8,7 @@
 | 자료 | 제공 | 조건 |
 |---|---|---|
 | BACI HS92, 판본 V202601 (1995–2024) | CEPII (Centre d'Études Prospectives et d'Informations Internationales) | Etalab Open Licence 2.0 — 이용·재배포·가공 자유, **출처표시 의무** |
-| 미국 CPI-U 연평균 1995~2024 (`config/us_cpi_u_annual.csv`) | 미국 노동통계국(BLS), FRED(CPIAUCNS) 경유 | 미국 연방정부 저작물, 공공 영역 |
+| 미국 CPI-U 연평균 1995\~2024 (`config/us_cpi_u_annual.csv`) | 미국 노동통계국(BLS), FRED(CPIAUCNS) 경유 | 미국 연방정부 저작물, 공공 영역 |
 
 인용: Gaulier, G. and Zignago, S. (2010) "BACI: International Trade Database at the Product-Level. The 1994-2007 Version", CEPII Working Paper 2010-23. 판본 V202601, 2026-01-30 공개.
 
