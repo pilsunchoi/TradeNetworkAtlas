@@ -91,7 +91,7 @@ table{border-collapse:collapse;width:100%;font-size:var(--fs-1)}
 th,td{padding:6px 8px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}
 th{color:var(--muted);font-weight:500;font-size:var(--fs-0);letter-spacing:.05em;text-transform:uppercase}
 td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
-.doc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 22px}
+.doc{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 22px;width:100%;max-width:1080px;margin-inline:auto}
 .doc .col{max-width:72ch}
 .doc h3{font-family:var(--serif);font-weight:400;font-size:22px;margin:18px 0 6px}
 .doc h3:first-child{margin-top:0}
@@ -247,7 +247,7 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
     <div class="research">
       <div class="research-head">
         <h2 class="h2">연구</h2>
-        <p class="lead">이 대시보드의 자료로 수행한 분석과 해설 문서를 모은다. 각 항목은 GitHub에 올린 문서(Markdown·표·그림)와 그 결과를 재현하는 스크립트로 연결된다.</p>
+        <p class="lead">이 대시보드의 자료로 수행한 분석과 해설 문서를 모은다. 각 항목은 GitHub에 올린 문서(Markdown·표·그림)와 그 결과를 재현하는 파이썬 노트북으로 연결된다.</p>
         <p class="note">첫 항목은 대시보드와 보고서가 쓰는 네트워크 지표를 정의한 해설 문서이고, 둘째 항목은 BACI 품목별 네트워크의 30년 시계열을 다룬 첫 분석 보고서다. 둘째의 소개글은 보고서의 요약을 옮긴 것이다.</p>
       </div>
 
@@ -259,12 +259,13 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
           <p class="mono-chsub">나라를 점, 수출입을 선으로 놓을 때 무엇을 재는가 — 차수에서 공동체까지 열네 가지 지표의 정의, 수식, 읽는 법</p>
           <p class="mono-desc">세계 교역은 나라를 노드, 수출입 흐름을 방향과 금액이 있는 엣지로 놓으면 하나의 네트워크가 된다. 이 문서는 그 네트워크를 요약하는 지표를 네 무리로 나눠 정의한다. 규모와 연결(활성 국가 수·밀도·호혜성), 누가 중심인가(차수 중심화·PageRank·HITS), 얼마나 몰려 있는가(HHI·상위 5개국 점유율·지니), 어떻게 뭉쳐 있는가(군집계수·동류성·모듈성·k-코어·역내 비중). 지표마다 교역에서의 뜻과 이 저장소의 계산 방법을 적었고, 네 가지 전형 구조와 컴퓨터(HS 8471)의 실제 네트워크를 그림으로 보였다.</p>
           <ul class="mono-bullets">
-            <li>네트워크를 만드는 세 선택(문턱, 노드 고정, 방향과 무게)이 지표를 어떻게 바꾸는지.</li>
+            <li>네트워크를 만드는 세 선택(가중치 임곗값, 노드 고정, 방향과 가중치)이 지표를 어떻게 바꾸는지.</li>
             <li>PageRank는 수출국→수입국 방향으로 계산하므로 큰 공급망이 흘러드는 시장을 가리킨다.</li>
             <li>함께 읽는 법: 한 노드가 전체 지표를 만들 수 있고, 집계 수준이 결론을 바꾸며, 자료 범위를 먼저 고정해야 한다.</li>
           </ul>
           <div class="mono-links">
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/docs/연구/네트워크_이론/교역네트워크_지표.md" target="_blank" rel="noopener">문서 읽기</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/네트워크_이론/교역네트워크_지표.md" target="_blank" rel="noopener">문서 읽기</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/네트워크_이론/분석_파이썬_코드.ipynb" target="_blank" rel="noopener">파이썬 노트북</a>
             <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/04_compute_metrics.py" target="_blank" rel="noopener">지표 계산 스크립트</a>
             <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/10_export_network_json.py" target="_blank" rel="noopener">대시보드 자료 스크립트</a>
           </div>
@@ -281,15 +282,14 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
           <p class="mono-desc"><b>언제 바뀌나.</b> 중국 허브화의 속도는 2012년을 단절점으로 절반으로 줄었고, 2015~2019년에는 품목 중위 점유율이 멈췄다가 2020년 이후 다시 올랐다. 품목 단위로는 중국 점유율이 정점을 지난 호가 41%(415개)인데, 농식품·광물·목재는 2007~2014년에, 신발·가죽·섬유는 2012~2017년에 정점을 지났고, 기계·전기·화학·플라스틱은 아직 상승 중이다. 한편 중국을 제외한 세계의 탈집중은 2008~2012년에 멈췄고, 모듈성은 2012년 이후 되돌아오고 있다.</p>
           <p class="mono-desc"><b>무엇으로.</b> BACI HS92(CEPII, V202601) 2억 7천만 행을 HS4 호마다 연도별 방향 가중 그래프로 만들고, 30년 내내 교역이 있는 207개국으로 노드를 고정해 100만 달러 미만 흐름을 뺐다. 품목 고정효과 패널(1,203호 × 30년)로 추세를 검정하고, 연도별 품목 중위 시계열에 단일 기울기 단절점을, 품목마다 중국 점유율의 정점 연도를 구했다.</p>
           <div class="mono-figs">
-            <a href="연구/중국허브화/그림/fig2_1위수출국_정체.png" target="_blank" rel="noopener"><img src="연구/중국허브화/그림/fig2_1위수출국_정체.png" alt="품목별 수출액 1위와 수출 상대국 수 1위인 품목의 비율, 1995–2024. 중국이 두 지표 모두에서 가파르게 오른다." loading="lazy"></a>
-            <a href="연구/중국허브화/그림/fig5_전환점.png" target="_blank" rel="noopener"><img src="연구/중국허브화/그림/fig5_전환점.png" alt="중국 허브화 세 계열과 중국 제외 세계 세 계열의 연도별 값과 단절점." loading="lazy"></a>
+            <a href="img/fig2_1위수출국_정체.png" target="_blank" rel="noopener"><img src="img/fig2_1위수출국_정체.png" alt="품목별 수출액 1위와 수출 상대국 수 1위인 품목의 비율, 1995–2024. 중국이 두 지표 모두에서 가파르게 오른다." loading="lazy"></a>
+            <a href="img/fig5_전환점.png" target="_blank" rel="noopener"><img src="img/fig5_전환점.png" alt="중국 허브화 세 계열과 중국 제외 세계 세 계열의 연도별 값과 단절점." loading="lazy"></a>
           </div>
           <div class="mono-links">
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/docs/연구/중국허브화/중국허브화와_세계교역네트워크.md" target="_blank" rel="noopener">문서 읽기</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/07_panel_regression.py" target="_blank" rel="noopener">패널 회귀 스크립트</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/08_concentration_actors.py" target="_blank" rel="noopener">집중 주체 스크립트</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/09_china_turning_points.py" target="_blank" rel="noopener">전환점 스크립트</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/tree/main/docs/연구/중국허브화/그림" target="_blank" rel="noopener">그림 여섯 장</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/중국허브화/중국허브화와_세계교역네트워크.md" target="_blank" rel="noopener">문서 읽기</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/중국허브화/분석_파이썬_코드.ipynb" target="_blank" rel="noopener">파이썬 노트북</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/04_compute_metrics.py" target="_blank" rel="noopener">지표 계산 스크립트</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/tree/main/analysis/중국허브화/img" target="_blank" rel="noopener">그림 여섯 장</a>
           </div>
         </div>
       </article>

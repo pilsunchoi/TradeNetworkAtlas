@@ -3,10 +3,12 @@
 *.duckdb
 *.duckdb.wal
 
-# 분석 산출물(표·그림 원본). 공개할 그림만 docs/연구/ 아래로 옮긴다
-/analysis/
+# 연구 폴더(analysis/<연구>/)는 MD·노트북·img만 올린다. 표 산출물·작업 문서·캐시는 로컬 전용
+analysis/*/outputs/
+analysis/*/작업문서/
+analysis/*/cache/
 
-# 작업 문서(검토 메모, 파일럿 기록, 연구계획). 로컬 전용
+# 연구 폴더와 무관한 검토 메모(Comtrade 검토 등). 로컬 전용
 /notes/
 
 logs/
