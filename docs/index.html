@@ -262,8 +262,8 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
             <li>지표의 해석: 한 노드의 변화가 전체 지표를 좌우할 수 있고, 집계 수준에 따라 결론이 달라지며, 노드와 임곗값으로 자료 범위를 먼저 고정해야 한다.</li>
           </ul>
           <div class="mono-links">
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/네트워크_이론/교역네트워크_지표.md" target="_blank" rel="noopener">문서 읽기</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/네트워크_이론/분석_파이썬_코드.ipynb" target="_blank" rel="noopener">파이썬 노트북</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/network-theory/paper.md" target="_blank" rel="noopener">문서 읽기</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/network-theory/analysis.ipynb" target="_blank" rel="noopener">파이썬 노트북</a>
             <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/04_compute_metrics.py" target="_blank" rel="noopener">지표 계산 스크립트</a>
             <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/10_export_network_json.py" target="_blank" rel="noopener">대시보드 자료 스크립트</a>
           </div>
@@ -280,10 +280,10 @@ td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-
           <p class="mono-desc"><b>언제 바뀌나.</b> 이 추세에 변화가 생긴 시점은 세 가지로 구분된다. 중국 허브화의 속도는 2012년을 단절점으로 절반으로 줄었고, 2015~2019년에는 품목 중위 점유율이 변하지 않다가 2020년 이후 다시 올랐다. 품목 단위에서는 중국 점유율이 정점을 지난 호가 41%(415개)인데, 농식품·광물·목재는 2007~2014년에, 신발·가죽·섬유는 2012~2017년에 정점을 지났고, 기계·전기·화학·플라스틱은 아직 상승하고 있다. 한편 중국을 제외한 세계의 탈집중은 2008~2012년에 멈췄고, 모듈성은 2012년 이후 낮아지고 있다.</p>
           <p class="mono-desc"><b>무엇으로.</b> BACI HS92 (CEPII, V202601) 2억 6,989만 행을 HS4 호마다 연도별 방향 가중 그래프로 만들고, 30년 내내 수출과 수입이 모두 있는 207개국으로 노드를 고정해 100만 달러 미만 흐름을 뺐다. 품목 고정효과 패널(1,203호 × 30년)로 추세를 검정하고, 연도별 품목 중위 시계열에 단일 기울기 단절점을, 품목마다 중국 점유율의 정점 연도를 구했다. 1995년 불변가격 100만 달러를 미국 CPI-U로 환산한 실질 임곗값으로 다시 계산해도 핵심 결과는 유지되며, 활성 국가 수와 k-코어처럼 엣지의 수에 좌우되는 지표의 추세만 줄어든다.</p>
           <div class="mono-links">
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/중국허브화/중국허브화와_세계교역네트워크.md" target="_blank" rel="noopener">문서 읽기</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/중국허브화/분석_파이썬_코드.ipynb" target="_blank" rel="noopener">파이썬 노트북</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/china-hub/paper.md" target="_blank" rel="noopener">문서 읽기</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/analysis/china-hub/analysis.ipynb" target="_blank" rel="noopener">파이썬 노트북</a>
             <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/blob/main/scripts/04_compute_metrics.py" target="_blank" rel="noopener">지표 계산 스크립트</a>
-            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/tree/main/analysis/중국허브화/img" target="_blank" rel="noopener">그림 여섯 장</a>
+            <a href="https://github.com/pilsunchoi/TradeNetworkAtlas/tree/main/analysis/china-hub/img" target="_blank" rel="noopener">그림 여섯 장</a>
           </div>
         </div>
       </article>
